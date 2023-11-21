@@ -36,4 +36,4 @@ jobs:
         with:
           version: ${{ steps.build.outputs.version }}
       - name: echo
-        run: echo ${{ steps.read-changelog.outputs.changes }}
+        run: echo '${{ steps.read-changelog.outputs.changes }}'
