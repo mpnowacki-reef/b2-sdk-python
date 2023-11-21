@@ -9,7 +9,7 @@ upcoming release can be found in [changelog.d](changelog.d).
 
 <!-- towncrier release notes start -->
 
-## [1.27.0](http://google.com) - 2023-11-20
+## [1.28.0](http://google.com) - 2023-11-20
 
 
 ### Added

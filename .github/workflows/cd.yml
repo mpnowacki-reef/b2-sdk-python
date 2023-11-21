@@ -35,4 +35,5 @@ jobs:
         uses: mindsers/changelog-reader-action@v2
         with:
           version: ${{ steps.build.outputs.version }}
-
+      - name: echo
+        run: echo ${{ steps.read-changelog.outputs.changes }}
