@@ -2,6 +2,7 @@ name: Continuous Delivery
 
 on:
   push:
+    branch: master
     tags: 'v*'  # push events to matching v*, i.e. v1.0, v20.15.10
 
 env:
@@ -33,18 +34,3 @@ jobs:
         uses: mindsers/changelog-reader-action@v2
         with:
           version: ${{ steps.build.outputs.version }}
-      - name: Create GitHub release and upload the distribution
-        id: create-release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: ${{ steps.build.outputs.version }}
-          body: ${{ steps.read-changelog.outputs.changes }}
-          draft: ${{ env.ACTIONS_STEP_DEBUG == 'true' }}
-          prerelease: false
-          files: ${{ steps.build.outputs.asset_path }}
-      - name: Upload the distribution to PyPI
-        if: ${{ env.B2_PYPI_PASSWORD != '' }}
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ env.B2_PYPI_PASSWORD }}
